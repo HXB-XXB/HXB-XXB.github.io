@@ -1,9 +1,92 @@
+
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
 <head>
-  <title>我的站点</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>xxb的个人主页</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-<body>
-  <h1>欢迎来到我的GitHub Pages</h1>
+<body class="darkMode">
+    <div id="headerBox"></div>
+    <header>
+        <div id="headerLeft">
+            <img id="anotherMark" class="markBig">
+        </div>
+        <div id="headerRight">
+            <button id="themeToggle">
+                <div class="moon"></div>
+                <span style="transition: all 0.3s ease-out; opacity: 0"></span>
+            </button>
+        </div>
+    </header>
+    
+    <main>
+        <div class="title">
+            <h1 class="title">欢迎来到xxb的空间</h1>
+        </div>
+        <section id="about">
+            <div class="subTitle">
+                <h2>关于我</h2>
+            </div>
+            <p>
+                1年码龄，今年12岁<br>
+                是只福瑞控，欢迎交友<span class="emoji">🐾</span>
+            </p>
+        </section>
+        
+        <section id="contact">
+            <div class="subTitle">
+                <h2>联系方式</h2>
+            </div>
+            <ul class="socialLinks">
+                <li>
+                    <img id="emailMark" class="mark">
+                    Email: <span class="email">13922452769@163.com</span>
+                    <span class="copy" onclick="copyTxt('13922452769@163.com')">🗒︎</span>
+                </li>
+                <li>
+                    <img id="wechatMark" class="mark">
+                    WeChat: <span class="wechat">h_x_b_2012</span>
+                    <span class="copy" onclick="copyTxt('h_x_b_2012')">🗒︎</span>
+                </li>
+                <li>
+                    <img id="githubMark" class="mark">
+                    GitHub: <a href="https://github.com/HXB-XXB">HXB-XXB</a>
+                </li>
+            </ul>
+        </section>
+        
+        <section id="account">
+            <div class="subTitle">
+                <h2>我的账号</h2>
+            </div>
+            <ul class="socialLinks">
+                <li>
+                    洛谷: <a href="https://www.luogu.com.cn/user/1432908">hxb</a>
+                </li>
+                <li>
+                    小木屋: <a href="https://world.xiaomawang.com/w/person/project/all/3972443">xxb</a>
+                </li>
+            </ul>
+        </section>
+        
+        <section id="works">
+            <div class="subTitle">
+                <h2>我的作品</h2>
+            </div>
+            <ul class="socialLinks">
+                <li>
+                    <a href="https://github.com/HXB-XXB/furryDoll">毛绒玩偶/兽设展示玩偶(浏览器拓展)</a>
+                </li>
+                <p style="font-size: small;">tips: 国内GitHub访问不稳定，进不去是正常现象，等几分钟再试</p>
+            </ul>
+        </section>
+    </main>
+    
+    <footer>
+        <p>-&copy; 2025 xxb-</p>
+    </footer>
 </body>
 </html>
+<script src="content.js"></script>
