@@ -1,15 +1,20 @@
 const themeToggle = document.getElementById('themeToggle');
 const body = document.body;
 
+setTimeout(() => {
+    document.querySelector(".curtain").remove();
+}, 2000);
+
 function setTheme(mode) {
     if(mode === "light") {
         body.classList.remove('darkMode');
         body.classList.add('lightMode');
         themeToggle.querySelector("span").textContent = '切换暗色模式';
         themeToggle.querySelector("div").className = 'sun';
-        document.getElementById("anotherMark").src = "icon/dark/github.svg";
+        // document.getElementById("anotherMark").src = "icon/dark/github.svg";
         document.getElementById("emailMark").src = "icon/dark/email.svg";
         document.getElementById("githubMark").src = "icon/dark/github.svg";
+        document.getElementById("githubMark2").src = "icon/dark/github.svg";
         document.getElementById("wechatMark").src = "icon/dark/wechat.svg";
         document.querySelectorAll(".emoji").forEach((e) => {
             e.style.setProperty('--inv', `0%`);
@@ -21,9 +26,10 @@ function setTheme(mode) {
         body.classList.add('darkMode');
         themeToggle.querySelector("span").textContent = '切换亮色模式';
         themeToggle.querySelector("div").className = 'moon';
-        document.getElementById("anotherMark").src = "icon/light/github.svg";
+        // document.getElementById("anotherMark").src = "icon/light/github.svg";
         document.getElementById("emailMark").src = "icon/light/email.svg";
         document.getElementById("githubMark").src = "icon/light/github.svg";
+        document.getElementById("githubMark2").src = "icon/light/github.svg";
         document.getElementById("wechatMark").src = "icon/light/wechat.svg";
         document.querySelectorAll(".emoji").forEach((e) => {
             e.style.setProperty('--inv', `100%`);

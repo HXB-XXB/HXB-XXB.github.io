@@ -124,6 +124,7 @@ header {
     background-color: var(--header-color);
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     opacity: 0.9;
+    z-index: 9999;
 }
 
 #headerLeft {
@@ -275,6 +276,7 @@ h2{
     background-color: transparent;
     box-shadow: 0 0 0 9999px #000;
     animation: roundHide 2s forwards;
+    pointer-events: none;
 }
 
 @keyframes roundHide {
