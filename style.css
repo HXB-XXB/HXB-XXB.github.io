@@ -1,6 +1,7 @@
 .darkMode {
     --header-color: #303436;
     --bg-color: #121212;
+    --click-bg-color: #414141;
     --text-color: #e0e0e0;
     --cut-line-color: #485666;
     --sp-text-color: #7bcaff;
@@ -12,6 +13,7 @@
 .lightMode {
     --header-color: #cde3ff;
     --bg-color: #f5f5f5;
+    --click-bg-color: #ebebeb;
     --text-color: #333333;
     --cut-line-color: #cbe3ff;
     --sp-text-color: #455358;
@@ -49,9 +51,9 @@ h1, h2, h3, h4, h5, h6, p, span, li {
 p, li {
     animation: show 1s forwards;
 }
-.emoji {
+.emojiBlack, .emojiWhite {
     --inv: 0;
-    filter: grayscale(100%) contrast(1000%) invert(var(--inv));
+    filter: grayscale(100%) contrast(200%) invert(var(--inv));
 }
 
 main {
@@ -66,6 +68,7 @@ section {
     margin-bottom: 1.5rem;
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    overflow: hidden;
 }
 
 .socialLinks {
@@ -130,6 +133,7 @@ header {
 #headerLeft {
     text-align: left;
     height: 0;
+    transform: translateY(-6px);
 }
 
 #headerRight {
@@ -262,7 +266,7 @@ h2{
 .curtain {
     position: relative;
     width: 100%;
-    height: 100vh;
+    height: 100%;
     background-color: #000;
 }
 
@@ -279,6 +283,23 @@ h2{
     pointer-events: none;
 }
 
+.curtainDiv {
+    width: 100%;
+    height: 0;
+    white-space: nowrap;
+    opacity: 0.75;
+}
+
+.curtainRound {
+    position: relative;
+    background-color: var(--click-bg-color);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    animation: roundHide 1s forwards;
+    pointer-events: none;
+    overflow: hidden;
+}
+
 @keyframes roundHide {
     0% {
         width: 0;
@@ -290,4 +311,42 @@ h2{
         padding-bottom: 200%;
         opacity: 0;
     }
+}
+
+.tagWeb, .tagJs, .tagHtml, .tagCpp, .tagC, .tagCp,.tagOther {
+    display: inline-block;
+    padding: 0;
+    margin: 5px;
+    color: #ffffff;
+    border-style: solid;
+    border-width: 0;
+    border-radius: 5px;
+    cursor: pointer;
+    transform: translateY(10px);
+    transition: all 0.25s ease-in-out;
+    font-size: 12.5px;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 20px;
+}
+.tagWeb {
+    background-color: rgba(71, 185, 71, 0.835);
+}
+.tagJs {
+    background-color: rgba(216, 201, 68, 0.835);
+}
+.tagHtml {
+    background-color: rgba(255, 92, 80, 0.835);
+}
+.tagCpp {
+    background-color: rgba(80, 112, 255, 0.835);
+}
+.tagC {
+    background-color: rgba(118, 80, 255, 0.835);
+}
+.tagCp {
+    background-color: rgba(80, 255, 168, 0.835);
+}
+.tagOther {
+    background-color: rgba(99, 99, 99, 0.835);
 }
