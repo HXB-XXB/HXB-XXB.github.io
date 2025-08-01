@@ -8,6 +8,7 @@
     --primary-color: #bb86fc;
     --secondary-color: #03dac6;
     --card-bg: #1e1e1e;
+    --inv: 100%;
 }
 
 .lightMode {
@@ -20,6 +21,7 @@
     --primary-color: #6200ee;
     --secondary-color: #018786;
     --card-bg: #ffffff;
+    --inv: 0%;
 }
 @font-face {
     font-family: 'EnglishFont';
@@ -51,9 +53,11 @@ h1, h2, h3, h4, h5, h6, p, span, li {
 p, li {
     animation: show 1s forwards;
 }
-.emojiBlack, .emojiWhite {
-    --inv: 0;
+.emojiBlack{
     filter: grayscale(100%) contrast(200%) invert(var(--inv));
+}
+.emojiWhite {
+    filter: grayscale(100%) contrast(200%) invert(calc(100% - var(--inv)));
 }
 
 main {
@@ -128,6 +132,7 @@ header {
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     opacity: 0.9;
     z-index: 9999;
+    transition: all 0.3s ease-in-out;
 }
 
 #headerLeft {
@@ -349,4 +354,23 @@ h2{
 }
 .tagOther {
     background-color: rgba(99, 99, 99, 0.835);
+}
+
+#bgImg {
+    --pageY: 0;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        url('background.svg');
+    background-repeat: 
+        repeat;
+    
+    background-size: 
+        auto 100%;
+    
+    background-position: 
+        0 var(--pageY);
+    opacity: 0.2;
+    filter: invert(calc(100% - var(--inv)));
 }

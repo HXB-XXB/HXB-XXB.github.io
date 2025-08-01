@@ -73,12 +73,6 @@ function setTheme(mode) {
         document.getElementById("githubMark").src = "icon/dark/github.svg";
         document.getElementById("githubMark2").src = "icon/dark/github.svg";
         document.getElementById("wechatMark").src = "icon/dark/wechat.svg";
-        document.querySelectorAll(".emojiBlack").forEach((e) => {
-            e.style.setProperty('--inv', `0%`);
-        })
-        document.querySelectorAll(".emojiWhite").forEach((e) => {
-            e.style.setProperty('--inv', `100%`);
-        })
         localStorage.setItem('theme', 'light');
     }
     else {
@@ -91,12 +85,6 @@ function setTheme(mode) {
         document.getElementById("githubMark").src = "icon/light/github.svg";
         document.getElementById("githubMark2").src = "icon/light/github.svg";
         document.getElementById("wechatMark").src = "icon/light/wechat.svg";
-        document.querySelectorAll(".emojiBlack").forEach((e) => {
-            e.style.setProperty('--inv', `100%`);
-        })
-        document.querySelectorAll(".emojiWhite").forEach((e) => {
-            e.style.setProperty('--inv', `0%`);
-        })
         localStorage.setItem('theme', 'dark');
     }
 }
@@ -185,3 +173,7 @@ document.querySelectorAll("button").forEach((e) => {
         }, 2000)
     })
 })
+
+window.addEventListener('scroll', () => {
+    document.getElementById("bgImg").style.setProperty("--pageY", `${-window.pageYOffset}px`);
+});
