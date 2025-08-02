@@ -113,7 +113,35 @@ themeToggle.addEventListener('mouseleave', function() {
     themeToggle.querySelector("span").style.opacity = "0";
 });
 
-function copyTxt(txt) {
+let animID;
+
+function setTips() {
+    const tips = document.getElementById("mouseTips");
+    tips.style.left = `${mouse.x}px`;
+    tips.style.top = `${mouse.y}px`;
+    animID =  requestAnimationFrame(setTips);
+}
+
+document.querySelectorAll(".copy").forEach((e) => {
+    const tips = document.getElementById("mouseTips");
+    e.addEventListener("mouseenter", () => {
+        animID =  requestAnimationFrame(setTips);
+        tips.style.opacity = "1";
+    });
+    e.addEventListener("mouseleave", () => {
+        cancelAnimationFrame(animID);
+        tips.style.opacity = "0";
+    });
+});
+
+function copyTxt(type) {
+    let txt;
+    if(type === "email") {
+        txt = `${(4640817590 * 3 - 1).toString()}@${55 * 3 - 2}.com`;
+    }
+    else if(type === "wechat") {
+        txt = `${("bxh").split('').reverse().join('_')}_${1974 + Number(("83").split('').reverse().join(''))}`;
+    }
     navigator.clipboard.writeText(txt);
     showTips('复制成功');
 }
@@ -175,5 +203,5 @@ document.querySelectorAll("button").forEach((e) => {
 })
 
 window.addEventListener('scroll', () => {
-    document.getElementById("bgImg").style.setProperty("--pageY", `${-window.pageYOffset}px`);
+    document.getElementById("bgImg").style.setProperty("--pageY", `${-window.pageYOffset * 0.5}px`);
 });
