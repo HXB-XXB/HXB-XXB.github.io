@@ -1,0 +1,983 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>计算测试</title>
+        <style>
+            body {
+                text-align: center;
+            }
+
+            .title {
+                color: black;
+                border-bottom: 2px solid #ccc;
+                pointer-events: none;
+                text-align: center;
+            }
+
+            #exam-list {
+                padding: 0;
+            }
+
+            .num {
+                position: relative;
+                transition: opacity 250ms ease-in-out;
+                font-size: 25px;
+                color: rgb(41, 41, 41);
+            }
+
+            .countTxt {
+                position: relative;
+                transition: opacity 250ms ease-in-out;
+                font-size: 25px;
+                color: rgb(88, 88, 88);
+                letter-spacing: 10px;
+            }
+
+            .countTxtSmall {
+                position: absolute;
+                margin-bottom: 10px;
+                transition: opacity 250ms ease-in-out;
+                font-size: 16.5px;
+                color: rgb(160, 160, 160);
+                letter-spacing: 15px;
+                transform: translate(15px, 13px);
+            }
+
+            .countDiv {
+                position: relative;
+                left: calc(100% - 50px);
+                width: 100%;
+                transform: translate(-100%, -5px);
+                text-align: end;
+                font-family: 'Courier New', Courier, monospace;
+                font-weight: 900;
+            }
+
+            .countContent {
+                width: 100%;
+                height: calc(100% - 200px);
+                overflow: auto;
+            }
+
+            .link {
+                transition: opacity 250ms ease-in-out, color 250ms ease-in-out;
+                font-size: 15px;
+                color: rgb(27, 126, 255);
+                pointer-events: all;
+                cursor: pointer;
+                position: relative;
+                top: -3px;
+            }
+
+            .link:hover {
+                color: rgb(141, 120, 255);
+            }
+            .ans {
+                background-color: #00000000;
+                transition: border 250ms ease-in-out, color 250ms ease-in-out;
+                position: relative;
+                height: 45px;
+                font-size: 20px;
+                color: rgb(29, 29, 29);
+                -moz-appearance: textfield; /* Firefox */
+                -webkit-appearance: none; /* Safari 和 Chrome */
+                border-color: #00000000;
+                border-style: solid;
+                border-radius: 5px;
+                margin: 0;
+            }
+            .ans:hover {
+                border-color: #000;
+            }
+            .ans::-webkit-outer-spin-button,
+            .ans::-webkit-inner-spin-button {
+                -webkit-appearance: none;
+                margin: 0;
+            }
+
+            .line {
+                background-color: #00000000;
+                transition: transform 250ms ease-in-out, opacity 250ms ease-in-out;
+                position: relative;
+                left: 50px;
+                width: calc(100% - 100px);
+                height: 150px;
+                text-align: start;
+                color: rgb(54, 54, 54);
+                list-style-type: none;
+                border-bottom: 2px solid #ececec;
+                font-size: 20px;
+                opacity: 0.75;
+                animation: show 250ms ease-in-out;
+                
+            }
+            .line:hover {
+                opacity: 1;
+            }
+
+            @keyframes show {
+                from {
+                    transform: translateX(-100%);
+                }
+                to {
+                    transform: translateX(0);
+                }
+            }
+
+            .txtBox {
+                position: relative;
+                top: 50%;
+                transform: translateY(-50%);
+            }
+
+            .ansBox {
+                position: relative;
+                text-align: end;
+                pointer-events: none;
+            }
+
+            .cutLine {
+                position: relative;
+                border-bottom: 4px solid rgb(41, 41, 41);
+            }
+
+            .btn {
+                transition: background-color 250ms ease-in-out, color 250ms ease-in-out, width 150ms ease-in-out, opacity 250ms ease-in-out;
+                width: 110px;
+                background-color: #69c26c;
+                color: white;
+                border-color: #4CAF50;
+                border-style: solid;
+                border-radius: 5px;
+                padding: 10px 20px;
+                font-size: 16px;
+                cursor: pointer;
+            }
+            .btn:hover {
+                background-color: white;
+                color: #4CAF50;
+                width: 200px;
+            }
+
+            .tfIcon {
+                height: 75px;
+                position: relative;
+                top: -20px;
+            }
+
+            #header, #headerBox {
+                transition: height 150ms ease-in-out, opacity 250ms ease-in-out, background-color 150ms ease-in-out;
+                width: 100%;
+                height: 50px;
+                z-index: 999;
+                left: 0;
+            }
+            #headerContent {
+                position: relative;
+                top: 50%;
+                transform: translateY(-50%);
+            }
+            #headerRepot {
+                opacity: 0;
+                display: none;
+            }
+
+            .ask {
+                transition: opacity 250ms ease-in-out;
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                height: 100%;
+                width: 100%;
+                background-color: #0000005b;
+                z-index: 1000;
+            }
+
+            .chosePage {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                height: 50%;
+                width: 50%;
+                min-width: 500px;
+                min-height: 300px;
+                background-color: #fff;
+                z-index: 1001;
+                border-radius: 10px;
+                padding-left: 50px;
+                padding-right: 50px;
+                text-align: start;
+            }
+            .highSettingPage {
+                white-space: nowrap;
+                overflow: auto;
+                height: calc(100% - 300px);
+                background-color:#f4f6ff;
+                border-radius: 5px;
+            }
+        </style>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.3.2/html2canvas.min.js"></script>
+    </head>
+    <body>
+        <main>
+            <div id="askPage" class="ask">
+                <div class="chosePage">
+                    <h1 class="title">100以内的计算测试</h1>
+                    <span style="color: red;">*</span>
+                    <span>提交后不可再次更改答案，请仔细检查你的答案</span>
+                    <br>
+                    <br>
+                    <span>初始题目数: <input type="number" id="examCount" class="ans" placeholder="输入题目数..." value="10"></span>
+                    <div class="highSettingPage">
+                        <h1 class="title">高级设置</h1>
+                        <span>加法出现概率权重: <input type="number" id="addChance" class="ans" style="width: 200px;" placeholder="输入权重..." value="1"></span>
+                        <span>最终出现概率: <span id="addChanceShow">25</span>%</span>
+                        <br>
+                        <span>减法出现概率权重: <input type="number" id="subChance" class="ans" style="width: 200px;" placeholder="输入权重..." value="1"></span>
+                        <span>最终出现概率: <span id="subChanceShow">25</span>%</span>
+                        <br>
+                        <span>乘法出现概率权重: <input type="number" id="multChance" class="ans" style="width: 200px;" placeholder="输入权重..." value="1"></span>
+                        <span>最终出现概率: <span id="multChanceShow">25</span>%</span>
+                        <br>
+                        <span>除法出现概率权重: <input type="number" id="divisChance" class="ans" style="width: 200px;" placeholder="输入权重..." value="1"></span>
+                        <span>最终出现概率: <span id="divisChanceShow">25</span>%</span>
+                    </div>
+                    <br>
+                    <div style="text-align: center;">
+                        <button onclick="start(examCount.value)" class="btn" style="position: absolute; bottom: 20px; transform: translateX(-50%)">开始</button>
+                    </div>
+                </div>
+            </div>
+            <div id="endPage" class="ask" style="opacity: 0; pointer-events: none;">
+                <div class="chosePage">
+                    <h1 class="title">测试报告</h1>
+                    <span style="color: red;">*</span>
+                    <span>关闭此页面后可以点击“重新测试”按钮进行新一轮的测试</span>
+                    <br>
+                    <br>
+                    <span>正确率: <span id="correctRate0" style="color: rgb(0, 192, 0);">未开始</span></span>
+                    <br>
+                    <span>用时: <span id="timeUsed0" style="color: gray;">未开始</span></span>
+                    <br>
+                    <br>
+                    <span>正确: <span id="correctCnt0" style="color: rgb(0, 192, 0);">未开始</span></span>
+                    <br>
+                    <span>错误: <span id="wrongCnt0" style="color: red;">未开始</span></span>
+                    <br>
+                    <span>未答题: <span id="unansweredCnt0" style="color: orange;">未开始</span></span>
+                    <div style="text-align: center;">
+                        <button onclick="closeReport()" class="btn" style="position: absolute; bottom: 20px; transform: translateX(-50%)">知道了</button>
+                    </div>
+                </div>
+            </div>
+            <div id="countPage" class="ask" style="opacity: 0; pointer-events: none;">
+                <div class="chosePage">
+                    <h1 class="title">竖式计算</h1>
+                    <div class="countContent">
+                        <div id="addCount">
+                            <br>
+                            <br>
+                            <div class="countDiv"></div>
+                        </div>
+                        <div id="subCount">
+                            <br>
+                            <br>
+                            <div class="countDiv"></div>
+                        </div>
+                        <div id="multCount">
+                            <br>
+                            <br>
+                            <div class="countDiv"></div>
+                        </div>
+                        <div id="divisCount">
+                            <br>
+                            <br>
+                            <div class="countDiv"></div>
+                        </div>
+                    </div>
+                    <span class="link" onclick="downloadPic()">下载竖式截图</span>
+                    <div style="text-align: center;">
+                        <button onclick="closeCount()" class="btn" style="position: absolute; bottom: 20px; transform: translateX(-50%)">知道了</button>
+                    </div>
+                </div>
+            </div>
+            <h1 class="title">计算下列各题并提交</h1>
+            <header id="header">
+                <div id="headerContent">
+                    <span>完成度：<span id="completion">0%</span> | </span>
+
+                    <span>用时：<span id="timeSpent">未开始</span></span>
+                    <br>
+                    <div id="headerRepot">
+                        <span>正确率: <span id="correctRate1" style="color: rgb(0, 192, 0);">未开始</span> | </span>
+                        <span>正确: <span id="correctCnt1" style="color: rgb(0, 192, 0);">未开始</span> | </span>
+                        <span>错误: <span id="wrongCnt1" style="color: red;">未开始</span> | </span>
+                        <span>未答题: <span id="unansweredCnt1" style="color: orange;">未开始</span></span>
+                    </div>
+                </div>
+            </header>
+            <header id="headerBox"></header>
+            <ul id="exam-list"></ul>
+            <button id="submitBtn" onclick="submitAnswers()" class="btn" style="opacity: 0;">确认提交</button>
+        </main>
+        <br>
+        <br>
+        <span>by xxb:/</span>
+        <br>
+    </body>
+    <script>
+        const nullIcon = `data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHdpZHRoPSIxOS42MjQ0MiIgaGVpZ2h0PSI0MS41Mjk2NCIgdmlld0JveD0iMCwwLDE5LjYyNDQyLDQxLjUyOTY0Ij48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtMjMwLjE4Nzc5LC0xNTcuOTk2NDEpIj48ZyBzdHJva2Utd2lkdGg9IjEuNSIgc3Ryb2tlLW1pdGVybGltaXQ9IjEwIj48cGF0aCBkPSJNMjMwLjkzNzc5LDE2NC41ODc5OWMwLDAgMTMuMDY5MDgsLTEwLjk0Mjc1IDE3LjU3MTA3LC0yLjg3NDI2YzIuMzIzMjgsNC4xNjM4IC0zLjE4ODMsMTAuNDkzNDUgLTYuOTEwMzQsMTYuNDY0MzFjLTMuMzk3ODIsNS40NTA3NSAtNC45NDMzMSwxMC43NTU3NSAtNC45NDMzMSwxMC43NTU3NSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmYwMDAwIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz48cGF0aCBkPSJNMjM5Ljc2MjA5LDE5OC4zMDk3MmMtMC4xNjAzNSwwLjgxNjM2IC0wLjk1MjE0LDEuMzQ4MTUgLTEuNzY4NSwxLjE4NzhjLTAuODE2MzYsLTAuMTYwMzUgLTEuMzQ4MTUsLTAuOTUyMTQgLTEuMTg3OCwtMS43Njg1YzAuMTYwMzUsLTAuODE2MzYgMC4xMDYxLC0xLjk5ODk1IDAuOTIyNDUsLTEuODM4NmMwLjgxNjM2LDAuMTYwMzUgMi4xOTQyLDEuNjAyOTQgMi4wMzM4NCwyLjQxOTN6IiBmaWxsPSIjZmYwMDAwIiBzdHJva2U9Im5vbmUiIHN0cm9rZS1saW5lY2FwPSJidXR0Ii8+PC9nPjwvZz48L3N2Zz48IS0tcm90YXRpb25DZW50ZXI6OS44MTIyMDc3OTg3NDcxODE6MjIuMDAzNTkwNDc2OTUxMTAzLS0+`;
+        const falseIcon = `data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHdpZHRoPSIzNi43MDc2MyIgaGVpZ2h0PSIzNS41NzY4MSIgdmlld0JveD0iMCwwLDM2LjcwNzYzLDM1LjU3NjgxIj48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtMjIxLjY0NjE5LC0xNjIuMjExNikiPjxnIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2ZmMDAwMCIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLW1pdGVybGltaXQ9IjEwIj48cGF0aCBkPSJNMjUwLjI4NjE3LDE2Mi45NjE2YzAsMCAtNC4zMzcyMSw5LjE5NTEzIC04Ljc2NjU4LDE0LjkyNjQyYy0xMi4xNzEwMSwxNS43NDg0IC0xOC41ODIzMSwxOC45NjE2MiAtMTguNTgyMzEsMTguOTYxNjIiLz48cGF0aCBkPSJNMjIyLjM5NjE5LDE2OC4zNDI1OGMwLDAgMTMuNjg3NzcsNi43MjUzIDE5LjMyMzEyLDExLjMxODM3YzYuMDY4NDMsNC45NDYwNSAxNS44ODQ1MSwxNy4zNzc0NiAxNS44ODQ1MSwxNy4zNzc0NiIvPjwvZz48L2c+PC9zdmc+PCEtLXJvdGF0aW9uQ2VudGVyOjE4LjM1MzgxNDk5OTk5OTk3OjE3Ljc4ODQwNDk5OTk5OTk4My0tPg==`;
+        const trueIcon = `data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHdpZHRoPSI0My41MDA1IiBoZWlnaHQ9IjMxLjIzMDc0IiB2aWV3Qm94PSIwLDAsNDMuNTAwNSwzMS4yMzA3NCI+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTIxOC4yNDk3NSwtMTY0LjM3NTgxKSI+PGcgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmYwMDAwIiBzdHJva2Utd2lkdGg9IjEuNSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbWl0ZXJsaW1pdD0iMTAiPjxwYXRoIGQ9Ik0yNjEuMDAwMjUsMTY1LjEyNTgxYzAsMCAtMjguMjg3NzUsMjkuMDYzODEgLTM1LjgzODQ5LDI5LjczMDc0Yy02LjMzOTMyLDAuNTU5OTMgLTYuMTYxNTEsLTEyLjM5NzQxIC02LjE2MTUxLC0xMi4zOTc0MSIvPjwvZz48L2c+PC9zdmc+PCEtLXJvdGF0aW9uQ2VudGVyOjIxLjc1MDI1MjUzNDUwNDkxOjE1LjYyNDE4OTE0NzE3MDc2Ny0tPg==`;
+
+
+        function randomInt(l, r) {
+            return Math.floor(Math.random() * (r - l + 1)) + l;
+        }
+
+        function sleep(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
+        }
+
+        function addCountTxt(div, txt) {
+            let x = document.createElement("span");
+            x.className = "countTxt";
+            x.innerHTML = `${txt}<br>`;
+            div.appendChild(x);
+        }
+        let nwCountType;
+
+        function showCount(type, a, b) {
+            nwCountType = type;
+            const page = document.getElementById('countPage');
+            page.style.opacity = '1';
+            page.style.pointerEvents = 'all';
+
+            let add = document.getElementById("addCount");
+            let sub = document.getElementById("subCount");
+            let mult = document.getElementById("multCount");
+            let divis = document.getElementById("divisCount");
+            add.style.display = "none";
+            sub.style.display = "none";
+            mult.style.display = "none";
+            divis.style.display = "none";
+            if(type === 0) {// +
+                let l1 = a.length;
+                let l2 = b.length;
+                let ml = Math.max(l1, l2) + 1;
+                add.style.display = "initial";
+
+                let div = add.querySelector(".countDiv");
+                div.innerHTML = '';
+
+                let x = a.toString().split("").reverse().map(Number), y = b.toString().split("").reverse().map(Number), z = [], addNum = [];
+
+                for(let i = 0; i < ml; i++) z.push(0);
+                for(let i = 0; i < ml; i++) addNum.push(0);
+                for(let i = l1; i < ml; i++) x.push(0);
+                for(let i = l2; i < ml; i++) y.push(0);
+
+                for(let i = 0; i < ml - 1; i++) {
+                    z[i] += x[i] + y[i];
+                    let tmp = Math.floor(z[i] / 10);
+                    if(addNum[i] === 0) addNum[i] = '';
+                    addNum[i + 1] += tmp;
+                    z[i + 1] += tmp;
+                    z[i] %= 10;
+                }
+                for(let i = 0; i < ml; i++) {
+                    if(addNum[i] === 0) addNum[i] = '&nbsp';
+                }
+
+                let i = ml - 1;
+                while(x[i] === 0 && i > 0) x[i] = '', i--;
+                i = ml - 1;
+                while(y[i] === 0 && i > 0) y[i] = '', i--;
+                i = ml - 1;
+                while(z[i] === 0 && i > 0) z[i] = '', i--;
+
+                addCountTxt(div, x.reverse().join(''));
+                addCountTxt(div, y.reverse().join(''));
+
+                div.innerHTML += `
+                    <div style="height: 0;">
+                        <h1 class="num" style="transform: translate(26px, -80px); left: calc(-100% + 100px); top: 30px; font-size: 30px">+</h1>
+                        <div class="cutLine" style="transform: translateY(-75px); width: calc(100% - 100px); left: 100px"></div>
+                    </div>
+                `;
+
+                let nw = document.createElement("span");
+                nw.className = "countTxtSmall";
+                nw.innerHTML = `${addNum.reverse().join('')}<br>`;
+                let width = Math.max(window.width * 0.5, 500);
+                nw.style.right = `26px`;
+                div.appendChild(nw);
+
+                addCountTxt(div, z.reverse().join(''));
+            }
+            if(type === 1) {// -
+                let l1 = a.length;
+                let l2 = b.length;
+                let ml = Math.max(l1, l2);
+                sub.style.display = "initial";
+
+                let div = sub.querySelector(".countDiv");
+                div.innerHTML = '';
+
+                let x = a.toString().split("").reverse().map(Number), y = b.toString().split("").reverse().map(Number), z = [], addNum = [];
+
+                for(let i = 0; i <= ml; i++) z.push(0);
+                for(let i = 0; i <= ml; i++) addNum.push(0);
+                for(let i = l1; i <= ml; i++) x.push(0);
+                for(let i = l2; i <= ml; i++) y.push(0);
+
+                for(let i = 0; i < ml; i++) {
+                    z[i] += x[i] - y[i];
+                    let tmp = Math.floor(z[i] / 10);
+                    addNum[i + 1] += -tmp;
+                    z[i + 1] += tmp;
+                    z[i] = (z[i] + 10) % 10;
+                }
+                for(let i = 0; i <= ml; i++) {
+                    if(addNum[i] === 0) addNum[i] = '&nbsp';
+                    else addNum[i] = '.';
+                }
+
+                let i = ml;
+                while(x[i] === 0 && i > 0) x[i] = '', i--;
+                i = ml;
+                while(y[i] === 0 && i > 0) y[i] = '', i--;
+                i = ml;
+                while(z[i] === 0 && i > 0) z[i] = '', i--;
+
+                let nw = document.createElement("span");
+                nw.className = "countTxtSmall";
+                nw.innerHTML = `${addNum.reverse().join('')}<br>`;
+                nw.style.transform = 'translate(37px, -20px)';
+                nw.style.letterSpacing = '19px';
+                let width = Math.max(window.width * 0.5, 500);
+                nw.style.right = `26px`;
+                div.appendChild(nw);
+
+                addCountTxt(div, x.reverse().join(''));
+                addCountTxt(div, y.reverse().join(''));
+
+                div.innerHTML += `
+                    <div style="height: 0;">
+                        <h1 class="num" style="transform: translate(26px, -80px); left: calc(-100% + 100px); top: 30px; font-size: 30px">-</h1>
+                        <div class="cutLine" style="transform: translateY(-75px); width: calc(100% - 100px); left: 100px"></div>
+                    </div>
+                `;
+
+                addCountTxt(div, z.reverse().join(''));
+            }
+            if(type === 2) {// *
+                let l1 = a.length;
+                let l2 = b.length;
+                let ml = l1 + l2;
+                mult.style.display = "initial";
+                
+                let div = mult.querySelector(".countDiv");
+                div.innerHTML = '';
+
+                let x = a.toString().split("").map(Number), y = b.toString().split("").map(Number), z = [], listSum = [], allAddNum = [];
+                addCountTxt(div, x.join('&nbsp'));
+                addCountTxt(div, y.join('&nbsp'));
+                div.innerHTML += `
+                    <div style="height: 0;">
+                        <h1 class="num" style="transform: translate(26px, -80px); left: calc(-100% + 100px); top: 30px; font-size: 30px">×</h1>
+                        <div class="cutLine" style="transform: translateY(-75px); width: calc(100% - 100px); left: 100px"></div>
+                    </div>
+                `;
+                x.reverse(), y.reverse();
+
+                [x, y] = [y, x];
+                [l1, l2] = [l2, l1];
+
+                for(let i = 0; i < ml; i++) z.push(0);
+                for(let i = 0; i < ml; i++) allAddNum.push(0);
+                for(let i = 0; i < ml; i++) listSum.push(0);
+                for(let i = l1; i < ml; i++) x.push(0);
+                for(let i = l2; i < ml; i++) y.push(0);
+
+                for(let i = 0; i < l1; i++) {
+                    let w = [];
+                    let addNum = [];
+                    for(let j = 0; j < ml; j++) w.push(0);
+                    for(let j = 0; j <= i; j++) addNum.push(0);
+                    for(let j = 0; j < l2; j++) {
+                        let tmp = x[i] * y[j] + z[i + j];
+                        let tmp2 = Math.floor(tmp / 10);
+
+                        let wTmp = x[i] * y[j] + w[i + j];
+                        let wTmp2 = Math.floor(wTmp / 10);
+                        w[i + j + 1] += wTmp2;
+                        w[i + j] = wTmp % 10;
+                        z[i + j + 1] += tmp2;
+                        z[i + j] = tmp % 10;
+                        listSum[i + j] += w[i + j];
+                        addNum.push(wTmp2);
+                    }
+                    for(let j = 0; j < i; j++) w[j] = '&nbsp';
+                    for(let j = 0; j < addNum.length; j++) {
+                        if(addNum[j] === 0) addNum[j] = '&nbsp';
+                    }
+                    let j = ml - 1;
+                    while(w[j] === 0 && j > 0) w[j] = '', j--;
+
+                    if(b.length <= 1) {
+                        [addNum, allAddNum] = [allAddNum, addNum];
+                        break;
+                    }
+                    
+                    let nw = document.createElement("span");
+                    nw.className = "countTxtSmall";
+                    nw.innerHTML = `${addNum.reverse().join('&nbsp')}<br>`;
+                    let width = Math.max(window.width * 0.5, 500);
+                    nw.style.right = `26px`;
+                    nw.style.color = "#9ecbff";
+                    nw.style.transform = "translate(38px, -4px)";
+                    div.appendChild(nw);
+                    
+                    addCountTxt(div, w.reverse().join('&nbsp').replace(/\//g, "&nbsp;"));
+                }
+                
+                for(let i = 0; i < allAddNum.length; i++) {
+                    if(allAddNum[i] === 0) allAddNum[i] = '&nbsp';
+                }
+                    
+                for(let i = 0; i < ml; i++) {
+                    let tmp = Math.floor(listSum[i] / 10);
+                    listSum[i + 1] += tmp;
+                    if(tmp === 0) allAddNum[i] = '&nbsp';
+                    else allAddNum[i] = tmp;
+                }
+                if(b.length > 1) {
+                    let cut = document.createElement("div");
+                    cut.className = "cutLine";
+                    cut.style.width = "calc(100% - 100px)";
+                    cut.style.left = "100px";
+                    div.appendChild(cut);
+                }
+
+                let nw = document.createElement("span");
+                nw.className = "countTxtSmall";
+                nw.innerHTML = `${allAddNum.reverse().join('&nbsp')}<br>`;
+                let width = Math.max(window.width * 0.5, 500);
+                nw.style.right = `26px`;
+                nw.style.transform = `translate(-11px, ${b.length > 1? -25: 10}px)`;
+                div.appendChild(nw);
+
+                let i = ml - 1;
+                while(z[i] === 0 && i > 0) z[i] = '', i--;
+                addCountTxt(div, z.reverse().join('&nbsp'));
+            }
+            if(type === 3) {// /
+                divis.style.display = "initial";
+
+                let div = divis.querySelector(".countDiv");
+                div.innerHTML = '';
+
+                let x = Number(a), y = Number(b);
+                let z = 0;
+
+                addCountTxt(div, Math.floor(x / y).toString().split('').join('&nbsp'));
+
+                div.innerHTML += `
+                    <div style="height: 0;">
+                        <div class="cutLine" style="width: calc(100% - 110px); left: 110px; top: 30px; transform: translateY(-30px);"></div>
+                        <h1 class="num" style="font-family: Times New Roman; height: 0; transform: translate(-14px, -62px); left: calc(-100% + 140px); top: 30px; font-size: 30px">丿</h1>
+                    </div>
+                `;
+
+                nw = document.createElement("span");
+                nw.className = "countTxt";
+                nw.innerHTML = `${y.toString().split('').join('&nbsp')}`;
+                nw.style.left = "calc(-100% + 170px)";
+                nw.style.transform = "translateX: -100%";
+                div.appendChild(nw);
+
+                addCountTxt(div, x.toString().split('').join('&nbsp'));
+
+                let tmp = 0;
+                for(let i = 0; i < a.length; i++) {
+                    tmp = tmp * 10 + Number(`${a[i]}`);
+                    let tmp2 = Math.floor(tmp / y);
+                    z = z * 10 + tmp2;
+                    tmp -= tmp2 * y;
+
+                    if(tmp2 === 0) continue;
+
+                    let str = (tmp2 * y).toString();
+                    for(let j = i + 1; j < a.length; j++) str += '/';
+                    addCountTxt(div, str.split('').join('&nbsp').replace(/\//g, "&nbsp;"));
+                    let cut = document.createElement("div");
+                    cut.className = "cutLine";
+                    cut.style.width = "calc(100% - 100px)";
+                    cut.style.left = "100px";
+                    div.appendChild(cut);
+                    str = tmp.toString();
+                    if(i != a.length - 1) {
+                        if(str === '0') str = a[i + 1];
+                        else str += a[i + 1];
+                    }
+                    for(let j = i + 2; j < a.length; j++) str += '0';
+                    addCountTxt(div, (str).split('').join('&nbsp'));
+                }
+            }
+        }
+
+        const examList = document.getElementById('exam-list');
+        const cntTypes = ['+', '-', '×', '÷'];
+        const ansList = [];
+        const lastList = [];
+        let allCnt;
+
+        let _frac100 = 0;
+        let lastDate;
+
+        let isEnd = false;
+
+        let chance;
+        let chanceSum;
+        setChanceData();
+
+        async function start(cnt) {
+            lastDate = new Date();
+
+            setInterval(() => {
+                if(isEnd) {
+                    return;
+                }
+                const now = new Date();
+                const times = now - lastDate;
+                const hours = String(Math.floor(times / 1000 / 60 / 60)).padStart(2, '0');
+                const minutes = String(Math.floor(times / 1000 / 60) % 60).padStart(2, '0');
+                const seconds = String(Math.floor(times / 1000) % 60).padStart(2, '0');
+                timeSpent.textContent = `${hours}小时${minutes}分${seconds}秒`;
+            }, 100);
+
+            const page = document.getElementById('askPage');
+            page.style.opacity = '0';
+            page.style.pointerEvents = 'none';
+            setTimeout(() => {
+                page.remove();
+            },250);
+
+            allCnt = cnt;
+            for(let i = 0; i < allCnt; i++) {
+
+                const div = document.createElement('li');
+                div.id = `exam${i}`;
+                div.className = 'line';
+                examList.appendChild(div);
+
+                lastList.push('');
+
+                // 题目显示区
+                const left = document.createElement('div');
+                left.className = 'txtBox';
+                div.appendChild(left);
+
+                const num = document.createElement('span');
+                num.className = 'num';
+                num.textContent = `${i + 1}. `;
+                left.appendChild(num);
+
+                let randNum = randomInt(1, chanceSum);
+
+                const typeChar = cntTypes[
+                    (randNum <= chance.add) ? 0 : 
+                    (randNum <= chance.add + chance.sub) ? 1 : 
+                    (randNum <= chance.add + chance.sub + chance.mult) ? 2 : 3
+                ];
+                const txt = document.createElement('span');
+                let a, b;
+                if(typeChar === '÷') {
+                    a = randomInt(0, 99);
+                    b = randomInt(2, 9);
+                    while(a % b) {
+                        a = randomInt(0, 99);
+                        b = randomInt(2, 9);
+                    }
+                    txt.textContent = `${a} ${typeChar} ${b} = `;
+                }
+                else if(typeChar === '-') {
+                    a = randomInt(0, 99);
+                    b = randomInt(0, 99);
+                    while(a < b) {
+                        a = randomInt(0, 99);
+                        b = randomInt(0, 99);
+                    }
+                    txt.textContent = `${a} ${typeChar} ${b} = `;
+                }
+                else {
+                    a = randomInt(0, 99);
+                    b = randomInt(0, 99);
+                    txt.textContent = `${a} ${typeChar} ${b} = `;
+                }
+                left.appendChild(txt);
+                if(typeChar === '+') {
+                    ansList.push(a + b);
+                }
+                else if(typeChar === '-') {
+                    ansList.push(a - b);
+                }
+                else if(typeChar === '×') {
+                    ansList.push(a * b);
+                }
+                else {
+                    ansList.push(a / b);
+                }
+
+                const ansIpt = document.createElement('input');
+                ansIpt.className = 'ans';
+                ansIpt.type = 'number';
+                ansIpt.placeholder = '填写答案...';
+                left.appendChild(ansIpt);
+                ansIpt.addEventListener('input', () => {
+                    if(ansIpt.value === '' && lastList[i] !== '') {
+                        _frac100--;
+                    }
+                    else if(ansIpt.value !== '' && lastList[i] === '') {
+                        _frac100++;
+                    }
+                    lastList[i] = ansIpt.value;
+                    document.getElementById('completion').textContent = `${Math.floor((_frac100 / allCnt) * 100)}%`;
+                });
+
+                // 答案显示区
+                const right = document.createElement('div');
+                right.className = 'ansBox';
+                div.appendChild(right);
+
+                const ans = document.createElement('span');
+                ans.className = 'num';
+                ans.textContent = `正确答案：${ansList[i]}`;
+                ans.style.opacity = "0";
+                right.appendChild(ans);
+
+                const see = document.createElement('span');
+                see.className = 'link';
+                see.textContent = `查看竖式`;
+                see.style.opacity = "0";
+                see.style.marginLeft =  "15px";
+                right.appendChild(see);
+
+                a = a.toString();
+                b = b.toString();
+                if(typeChar === '+') {
+                    see.addEventListener('click', () => {
+                        showCount(0, a, b);
+                    });
+                }
+                else if(typeChar === '-') {
+                    see.addEventListener('click', () => {
+                        showCount(1, a, b);
+                    });
+                }
+                else if(typeChar === '×') {
+                    see.addEventListener('click', () => {
+                        showCount(2, a, b);
+                    });
+                }
+                else {
+                    see.addEventListener('click', () => {
+                        showCount(3, a, b);
+                    });
+                }
+
+                await sleep(50);
+            }
+            document.getElementById("submitBtn").style.opacity = "1";
+        }
+
+        async function submitAnswers() {
+            isEnd = true;
+
+            const btn = document.getElementById('submitBtn');
+
+            let correct = 0;
+            let wrong = 0;
+            let unanswered = 0;
+
+            if(btn.textContent === "重新测试") {
+                window.location.reload();
+                return;
+            }
+            btn.disabled = true;
+            btn.textContent = "提交成功！";
+            btn.style.width = "125px";
+            for(let i = 0; i < allCnt; i++) {
+                const ansIpt = document.querySelector(`#exam${i} .ans`);
+                ansIpt.style.pointerEvents = 'none';
+                ansIpt.placeholder = '';
+            }
+            for(let i = 0; i < allCnt; i++) {
+                const div = document.querySelector(`#exam${i}`);
+                const ansIpt = div.querySelector(`.ans`);
+                await window.scrollTo({
+                    top: div.offsetTop - window.innerHeight / 2,
+                    behavior: 'smooth'
+                });
+
+                await sleep(750);
+                
+                const img = document.createElement('img');
+                img.className = "tfIcon";
+                img.style.left = `${ansIpt.offsetLeft + ansIpt.value.length * 10 + 20}px`;
+                if(ansIpt.value === '') {
+                    img.src = nullIcon;
+                    div.querySelectorAll('.ansBox span').forEach(e => {
+                        e.style.opacity = "1";
+                    });
+                    unanswered++;
+                } else if(Number(ansIpt.value) !== ansList[i]) {
+                    img.src = falseIcon;
+                    div.querySelectorAll('.ansBox span').forEach(e => {
+                        e.style.opacity = "1";
+                    });
+                    wrong++;
+                } else {
+                    ansIpt.style.borderColor = 'lightgreen';
+                    img.src = trueIcon;
+                    correct++;
+                }
+                div.appendChild(img);
+            }
+            btn.disabled = false;
+            btn.textContent = "重新测试";
+            btn.style.width = "110px";
+        
+            //报告
+            
+            let page = document.getElementById('endPage');
+            page.style.opacity = '1';
+            page.style.pointerEvents = 'auto';
+
+            let headerRepot = document.getElementById('headerRepot');
+            headerRepot.style.opacity = '1';
+            headerRepot.style.display = 'initial';
+
+            for(let i = 0; i < 2; i++) {
+                let correctRate = document.getElementById(`correctRate${i}`);
+                let correctCnt = document.getElementById(`correctCnt${i}`);
+                let wrongCnt = document.getElementById(`wrongCnt${i}`);
+                let unansweredCnt = document.getElementById(`unansweredCnt${i}`);
+
+                correctRate.textContent = `${Math.floor((correct / allCnt) * 100)}%`;
+                correctCnt.textContent = correct;
+                wrongCnt.textContent = wrong;
+                unansweredCnt.textContent = unanswered;
+
+                if(i === 0) {
+                    let timeUsed = document.getElementById(`timeUsed${i}`);
+                    timeUsed.textContent = document.getElementById('timeSpent').textContent;
+                }
+            }
+        }
+
+        examCount.addEventListener('blur', () => {
+            examCount.value = Math.round(examCount.value);
+            const value = examCount.value;
+            if(value < 1) {
+                examCount.value = 1;
+            } else if(value > 999) {
+                examCount.value = 999;
+            }
+        });
+        
+        document.querySelectorAll(`div[class="highSettingPage"] input`).forEach(e => {
+            e.addEventListener('blur', () => {
+                const value = e.value;
+                evalue = Math.round(e.value);
+                if(value < 0 || value === '') {
+                    e.value = 0;
+                }
+                setChanceData();
+                if(value < 1 && chanceSum === 0) {
+                    e.value = 1;
+                }
+                setChanceData();
+            });
+        })
+
+        function setHeader() {
+            const header = document.getElementById('header');
+            const headerBox = document.getElementById('headerBox');
+            const headerCont = document.getElementById('headerContent');
+            if (window.scrollY > 90) {
+                header.style.position = 'fixed';
+                header.style.top = '0';
+                header.style.backgroundColor = "rgba(196, 196, 196, 0.295)";
+                headerBox.style.display = "";
+            } else {
+                header.style.position = 'static';
+                header.style.backgroundColor = "#ffffffb0";
+                headerBox.style.display = "none";
+            }
+        }
+
+        function setChanceData() {
+            chance = {
+                add : Number(document.getElementById("addChance").value),
+                sub : Number(document.getElementById("subChance").value),
+                mult : Number(document.getElementById("multChance").value),
+                divis : Number(document.getElementById("divisChance").value),
+            };
+            chanceSum = chance.add + chance.sub + chance.mult + chance.divis;
+
+            document.getElementById("addChanceShow").textContent = Math.ceil(chance.add / chanceSum * 100);
+            document.getElementById("subChanceShow").textContent = Math.ceil(chance.sub / chanceSum * 100);
+            document.getElementById("multChanceShow").textContent = Math.ceil(chance.mult / chanceSum * 100);
+            document.getElementById("divisChanceShow").textContent = Math.ceil(chance.divis / chanceSum * 100);
+        }
+
+        function closeReport() {
+            const page = document.getElementById('endPage');
+            page.style.opacity = '0';
+            page.style.pointerEvents = 'none';
+            setTimeout(() => {
+                page.remove();
+            }, 250);
+        }
+
+        function closeCount() {
+            const page = document.getElementById('countPage');
+            page.style.opacity = '0';
+            page.style.pointerEvents = 'none';
+        }
+
+        window.onload = () => {
+            setHeader();
+        };
+
+        window.addEventListener('scroll', () => {
+            setHeader();
+        });
+
+        function downloadPic() {
+            let name = (nwCountType === 0? "add":
+                nwCountType === 1? "sub":
+                nwCountType === 2? "mult": "divis"
+            );
+            let element = document.querySelector(`#${name}Count .countDiv`);
+            html2canvas(element).then(function (canvas) {
+                document.body.appendChild(canvas);
+                let imgData = canvas.toDataURL('image/png');
+                downloadURI(imgData, 'screenshot.png');
+                canvas.remove();
+            });
+        };
+        
+        function downloadURI(url, name) {
+            let link = document.createElement("a");
+            link.download = name;
+            link.href = url;
+            link.click();
+        }
+    </script>
+</html>
