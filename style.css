@@ -7,7 +7,7 @@
     --sp-text-color: #7bcaff;
     --primary-color: #bb86fc;
     --secondary-color: #03dac6;
-    --card-bg: #1e1e1e;
+    --card-bg: #1e1e1e60;
     --inv: 100%;
 }
 
@@ -20,7 +20,7 @@
     --sp-text-color: #455358;
     --primary-color: #6200ee;
     --secondary-color: #018786;
-    --card-bg: #ffffff;
+    --card-bg: #ffffff60;
     --inv: 0%;
 }
 @font-face {
@@ -44,6 +44,7 @@ body {
     padding: 0;
     transition: all 0.3s ease;
     font-family: 'EnglishFont', 'ChineseFont', sans-serif;
+    overflow-x: hidden;
 }
 
 h1, h2, h3, h4, h5, h6, p, span, li {
@@ -64,6 +65,7 @@ main {
     max-width: 800px;
     margin: 2rem auto;
     padding: 0 1rem;
+    position: static;
 }
 
 section {
@@ -355,6 +357,7 @@ h2{
 
 #bgImg {
     --pageY: 0;
+    z-index: -1;
     position: fixed;
     width: 100%;
     height: 100%;
@@ -367,10 +370,10 @@ h2{
         auto 100%;
     
     background-position: 
-        0 var(--pageY);
+        50% var(--pageY);
     opacity: 0.2;
     filter: invert(calc(100% - var(--inv))) drop-shadow(0 0 5px #ffffff17);
-    transition: filter 0.1s ease-in-out;
+    transition: filter 0.3s ease-in-out;
 }
 
 #mouseTips {
@@ -385,4 +388,23 @@ h2{
     background-color: var(--bg-color);
     opacity: 0;
     pointer-events: none;
+}
+
+#mainTitle {
+    white-space: nowrap;
+    animation: showMainTitle 1.5s forwards;
+    font-size: large;
+}
+
+@keyframes showMainTitle {
+    0% {
+        opacity: 0;
+        transform: scale(2);
+        font-size: 30px;
+    }
+    100% {
+        opacity: 1;
+        font-size: large;
+    }
+    
 }

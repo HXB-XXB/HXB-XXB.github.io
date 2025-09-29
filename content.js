@@ -68,7 +68,7 @@ function setTheme(mode) {
         body.classList.add('lightMode');
         themeToggle.querySelector("span").textContent = '切换暗色模式';
         themeToggle.querySelector("div").className = 'sun';
-        document.getElementById("anotherMark").src = "icon/dark/github.svg";
+        document.getElementById("authorMark").src = "icon/dark/github.svg";
         document.getElementById("emailMark").src = "icon/dark/email.svg";
         document.getElementById("githubMark").src = "icon/dark/github.svg";
         document.getElementById("githubMark2").src = "icon/dark/github.svg";
@@ -80,7 +80,7 @@ function setTheme(mode) {
         body.classList.add('darkMode');
         themeToggle.querySelector("span").textContent = '切换亮色模式';
         themeToggle.querySelector("div").className = 'moon';
-        document.getElementById("anotherMark").src = "icon/light/github.svg";
+        document.getElementById("authorMark").src = "icon/light/github.svg";
         document.getElementById("emailMark").src = "icon/light/email.svg";
         document.getElementById("githubMark").src = "icon/light/github.svg";
         document.getElementById("githubMark2").src = "icon/light/github.svg";
@@ -149,7 +149,7 @@ function copyTxt(type) {
 function showTips(txt) {
     // 创建提示元素
     const tips = document.createElement('div');
-    tips.textContent = txt;
+    tips.innerHTML = txt;
     tips.className = "tips";
     document.body.appendChild(tips);
 
