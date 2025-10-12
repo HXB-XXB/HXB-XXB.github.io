@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>班级空间</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="darkMode">
+    <div id="bgImg"></div>
+    <div id="headerBox"></div>
+    <header>
+        <div id="headerLeft">
+            <img id="authorMark" class="markBig">
+            &nbsp;
+            <h1 style="display: inline;">Class10</h1>
+        </div>
+        <div id="headerRight">
+            <button id="themeToggle">
+                <div class="moon"></div>
+                <span style="transition: all 0.3s ease-out; opacity: 0"></span>
+            </button>
+        </div>
+    </header>
+    
+    <main>
+        <br>
+        <div class="title" id="mainTitle">
+            <h1 class="title">欢迎来到班级空间</h1>
+        </div>
+        <br>
+        <section id="about">
+            <div class="subTitle">
+                <h2>关于</h2>
+            </div>
+            <p>
+                初一(10)班
+                <br>
+                轻松的氛围<span class="emojiBlack">🐾</span>
+                <br>
+                <br>
+                今天你在学校还活着吗?<span class="emojiWhite">😸</span>
+            </p>
+        </section>
+
+        <section id="sign">
+            <div class="subTitle">
+                <h2>公告</h2>
+            </div>
+            <p>
+                <h3>距离中考还有&nbsp<span id="zkTimer" style="color: red;"></span></h3>
+            </p>
+        </section>
+
+        <section id="works">
+            <div class="subTitle">
+                <h2>我们的作品</h2>
+            </div>
+            <ul class="socialLinks" id="worksList"></ul>
+            <div style="opacity: 0.75;">
+                <p style="font-size: small;">Tips: 作品已全部托管至&nbsp;&nbsp;<img id="githubMark2" class="mark">GitHub</p>
+            </div>
+        </section>
+        
+        <section id="account">
+            <div class="subTitle">
+                <h2>我们的账号</h2>
+            </div>
+            <div id="userLinkData"></div>
+        </section>
+        
+        <section id="contact">
+            <div class="subTitle">
+                <h2>开发者联系方式</h2>
+            </div>
+            <ul class="socialLinks">
+                <li>
+                    <img id="emailMark" class="mark">
+                    Email: <span class="copy" onclick="copyTxt('email')">点击复制</span>
+                </li>
+                <li>
+                    <img id="wechatMark" class="mark">
+                    WeChat: <span class="copy" onclick="copyTxt('wechat')">点击复制</span>
+                </li>
+                <li>
+                    <img id="githubMark" class="mark">
+                    GitHub: <a href="https://github.com/HXB-XXB">HXB-XXB</a>
+                </li>
+            </ul>
+        </section>
+
+        <div id="mouseTips">+ 复制</div>
+    </main>
+    
+    <footer>
+        <p>-&copy; 2025 xxb-</p>
+    </footer>
+
+    <div style="width: 0; height: 0">
+        <div class="curtain"></div>
+    </div>
+</body>
+</html>
+<script src="content.js"></script>
