@@ -248,20 +248,20 @@ addUserLink("xxb", [
     ["BiliBili", "xxb", "https://space.bilibili.com/3546924904876904?spm_id_from=333.337.0.0"],
 ]);
 
-function updateDate() {
+function updateTimer(e, mod = (3 * 365 * 60 * 60 * 24 * 1000)) {
     const now = new Date();
 
     const examDate = new Date(2028, 5, 29);
 
     const time = new Date();
-    const diff = examDate - now;
+    const diff = (examDate - now) % mod;
             
     if (diff < 0) {
         document.getElementById("zkTimer").textContent = `Holy Shit! 考完力!`;
         return;
     }
             
-    // 计算各时间单位
+    // 计算各时 间单位
     const seconds = Math.floor(diff / 1000) % 60;
     const minutes = Math.floor(diff / (1000 * 60)) % 60;
     const hours = Math.floor(diff / (1000 * 60 * 60)) % 24;
@@ -272,8 +272,22 @@ function updateDate() {
     const days = totalDays % 365;
             
     // 更新显示
-    document.getElementById("zkTimer").textContent = `${years}年${days}天${hours}时${minutes}分${seconds}秒`;
+    if(years) e.textContent = `还有 ${years}年 ${days}天 ${hours}时 ${minutes}分 ${seconds}秒`;
+    else if(days) {
+        if(days > 100)e.textContent = `还有 ${days}天 ${hours}时 ${minutes}分 ${seconds}秒`;
+        else e.textContent = `仅剩 ${days}天 ${hours}时 ${minutes}分 ${seconds}秒`;
+    }
+    else if(hours) e.textContent = `仅剩 ${hours}时 ${minutes}分 ${seconds}秒`;
+    else if(minutes) e.textContent = `仅剩 ${minutes}分 ${seconds}秒`;
+    else if(seconds) e.textContent = `仅剩 ${seconds}秒`;
+    else e.textContent = `结束!`;
 }
 
-updateDate();
-setInterval(() => {updateDate()}, 1000);
+function update() {
+    updateTimer(document.getElementById("zkTimer"));
+    updateTimer(document.getElementById("qzkTimer"), (0.5 * 365 * 60 * 60 * 24 * 1000));
+    updateTimer(document.getElementById("qmkTimer"), (1 * 365 * 60 * 60 * 24 * 1000));
+}
+
+update();
+setInterval(() => {update()}, 1000);
