@@ -285,9 +285,10 @@ function updateTimer(e, mod = (3 * 365 * 60 * 60 * 24 * 1000)) {
 
 function update() {
     updateTimer(document.getElementById("zkTimer"));
-    updateTimer(document.getElementById("qzkTimer"), (0.5 * 365 * 60 * 60 * 24 * 1000));
-    updateTimer(document.getElementById("qmkTimer"), (1 * 365 * 60 * 60 * 24 * 1000));
+    updateTimer(document.getElementById("qzkTimer"), (0.25 * 365 * 60 * 60 * 24 * 1000));
+    updateTimer(document.getElementById("qmkTimer"), (0.5 * 365 * 60 * 60 * 24 * 1000));
 }
 
 update();
+
 setInterval(() => {update()}, 1000);
