@@ -22,7 +22,8 @@ const languageMap = {
     "我信奉“1+1 > 2”，也享受与不同视角的人碰撞火花。": "I believe in '1+1 > 2' and enjoy the sparks that come from interacting with people with different perspectives.",
     "无论你是想共建 fxx，还是另有奇思妙想——": "Whether you want to co-build fxx or have other creative ideas—",
     "QQ 备注“合作”单开一行，再添加具体内容，我们细聊。": "Please send a QQ message with 'Cooperation' in the subject line, and add specific details for further discussion.",
-    "假期较为活跃，空余充足，随时可开工。": "I am quite active during holidays, with plenty of free time, ready to start work at any time."
+    "假期较为活跃，空余充足，随时可开工。": "I am quite active during holidays, with plenty of free time, ready to start work at any time.",
+    "⚠️ 文案经过 DeepSeek 润色": "⚠️ The copy has been polished by DeepSeek",
 };
 
 var languageMapInv = {};
