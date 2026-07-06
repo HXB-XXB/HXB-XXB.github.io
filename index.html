@@ -1,108 +1,104 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>xxb的个人空间</title>
-    <link rel="stylesheet" href="style.css">
+    <title>关于 | About</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
-<body class="darkMode">
-    <div id="bgImg"></div>
-    <div id="headerBox"></div>
-    <header>
-        <div id="headerLeft">
-            <img id="authorMark" class="markBig">
-            &nbsp;
-            <h1 style="display: inline;">xxb</h1>
-        </div>
-        <div id="headerRight">
-            <button id="themeToggle">
-                <div class="moon"></div>
-                <span style="transition: all 0.3s ease-out; opacity: 0"></span>
-            </button>
-        </div>
-    </header>
-    
+
+<body>
     <main>
-        <br>
-        <div class="title" id="mainTitle">
-            <h1 class="title">欢迎来到xxb的空间</h1>
+        <div class="container">
+            <div class="button-container">
+                <button id="theme-toggle" class="block-button">
+                    <img id="themeIcon" src="img/moon.svg" alt="light" class="button-icon">
+                    <div class="button-text">
+                        <span class="button-p-name">
+                            <span>
+                                <span data-lang id="themeName">暗</span>
+                                <span data-lang>色模式</span>
+                            </span>
+                        </span>
+                        <br>
+                        <span>
+                            <span data-lang class="button-info-text">点击切换为</span>
+                            <span data-lang id="themeNameInv" class="button-info-text">亮</span>
+                            <span data-lang class="button-info-text">色模式</span>
+                        </span>
+                    </div>
+                </button>
+
+                <button id="lang-toggle" class="block-button">
+                    <img src="img/lang.svg" alt="Language" class="button-icon">
+                    <div class="button-text">
+                        <span class="button-p-name">
+                            <span>
+                                <span data-lang id="langName">中文</span>
+                                <span data-lang>模式</span>
+                            </span>
+                        </span>
+                        <br>
+                        <span class="button-info-text">
+                            <span data-lang-inv class="button-info-text">Click to switch to </span>
+                            <span data-lang-inv id="langNameInv" class="button-info-text">English</span>
+                            <span data-lang-inv class="button-info-text"> mode</span>
+                        </span>
+                    </div>
+                </button>
+            </div>
         </div>
-        <br>
-        <section id="about">
-            <div class="subTitle">
-                <h2>关于我</h2>
-            </div>
+
+        <div class="container">
+            <h1 data-lang>关于我</h1>
+            <p>xxb · hxb · ob9963 · 小玖叁</p>
+            <p data-lang>创作者 / 玩家</p>
+        </div>
+        <div class="container">
+            <h1 data-lang>技术栈</h1>
+            <p>C++ · JavaScript · Node.js · HTML · CSS · Scratch</p>
+            <p data-lang>我会尽力学习新技术</p>
+        </div>
+        <div class="container">
+            <h1 data-lang>身份标签</h1>
+            <p data-lang>程序员 · 学生 · 独立开发者（游戏） · 画家 · OIer · 福瑞控</p>
+        </div>
+        <div class="container">
+            <h1 data-lang>项目集</h1>
+            <p data-lang>· fxn 系列 — 独立项目集，个人脑洞的落地场</p>
+            <p data-lang>· fxx 系列 — 合作项目集（目前架构已定，内容待填充，期待你的加入）</p>
+        </div>
+        <div class="container">
+            <h1 data-lang>合作意向</h1>
             <p>
-                1年码龄，今年12岁
-                <br>
-                是只福瑞控，欢迎交流<span class="emojiBlack">🐾</span>
-                <br>
-                <br>
-                要好好的活着呀<span class="emojiWhite">😸</span>
+                <span data-lang>我信奉“1+1 > 2”，也享受与不同视角的人碰撞火花。</span><br>
+                <span data-lang>无论你是想共建 fxx，还是另有奇思妙想——</span><br>
+                <span data-lang>QQ 备注“合作”单开一行，再添加具体内容，我们细聊。</span>
             </p>
-        </section>
-        
-        <section id="contact">
-            <div class="subTitle">
-                <h2>联系方式</h2>
+            <p data-lang>
+                假期较为活跃，空余充足，随时可开工。
+            </p>
+        </div>
+        <div class="container">
+            <h1 data-lang>联系方式</h1>
+            <div class="avatar-container">
+                <div class="avatar">
+                    <img src="img/xxb.png" alt="Avatar" class="avatar-img">
+                </div>
+                <div class="avatar-info">
+                    <span class="avatar-name">xxb</span>
+                    <span class="avatar-title">
+                        xxb / hxb / ob9963 / 小玖叁
+                        <br>
+                        你好世界 | Hello World
+                    </span>
+                </div>
             </div>
-            <ul class="socialLinks">
-                <li>
-                    <img id="emailMark" class="mark">
-                    Email: <span class="copy" onclick="copyTxt('email')">点击复制</span>
-                </li>
-                <li>
-                    <img id="wechatMark" class="mark">
-                    WeChat: <span class="copy" onclick="copyTxt('wechat')">点击复制</span>
-                </li>
-                <li>
-                    <img id="githubMark" class="mark">
-                    GitHub: <a href="https://github.com/HXB-XXB">HXB-XXB</a>
-                </li>
-            </ul>
-        </section>
-        
-        <section id="account">
-            <div class="subTitle">
-                <h2>我的账号</h2>
-            </div>
-            <ul class="socialLinks">
-                <li>
-                    GitHub: <a href="https://github.com/HXB-XXB">HXB-XXB</a>
-                </li>
-                <li>
-                    洛谷: <a href="https://www.luogu.com.cn/user/1432908">hxb</a>
-                </li>
-                <li>
-                    小木屋: <a href="https://world.xiaomawang.com/w/person/project/all/3972443">xxb</a>
-                </li>
-                <li>
-                    BiliBili: <a href="https://space.bilibili.com/3546924904876904?spm_id_from=333.337.0.0">屑xxb</a>
-                </li>
-            </ul>
-        </section>
-        
-        <section id="works">
-            <div class="subTitle">
-                <h2>我的作品</h2>
-            </div>
-            <ul class="socialLinks" id="worksList"></ul>
-            <div style="opacity: 0.75;">
-                <p style="font-size: small;">tips: 国内&nbsp;&nbsp;<img id="githubMark2" class="mark">GitHub&nbsp;访问不稳定，进不去是正常现象，等几分钟再试</p>
-            </div>
-        </section>
-
-        <div id="mouseTips">+ 复制</div>
+            <div id="contact-info" class="button-container"></div>
+        </div>
     </main>
-    
-    <footer>
-        <p>-&copy; 2025 xxb-</p>
-    </footer>
-
-    <div style="width: 0; height: 0">
-        <div class="curtain"></div>
-    </div>
 </body>
+
 </html>
-<script src="content.js"></script>
+<script src="script.js"></script>
