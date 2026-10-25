@@ -80,7 +80,7 @@ function startProject(project) {
         script.dataset.author = project.author;
         script.src = new URL("js/scratch_player.js", document.baseURI).href;
         script.id = "scratch-player-script";
-        doc.body.appendChild(script);
+        doc.body.prependChild(script);
     };
 
     document.getElementById("project-iframe").appendChild(frame);
