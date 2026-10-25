@@ -1,0 +1,284 @@
+{
+  "projects": [
+    {
+      "key": "rayTracing",
+      "image": "ray_tracing.png",
+      "link": "file.html",
+      "iframe": "projects/RayTracing/ray_tracing.html",
+      "version": "Beta 1.1",
+      "license": "GPLv3",
+      "author": "xxb",
+      "downloads": [
+        {
+          "label": {
+            "zh": "TurboWarp / Scratch 3.0",
+            "en": "TurboWarp / Scratch 3.0"
+          },
+          "path": "projects/RayTracing/ray_tracing.sb3"
+        },
+        {
+          "label": {
+            "zh": "网页",
+            "en": "Web"
+          },
+          "path": "projects/RayTracing/ray_tracing.html"
+        },
+        {
+          "label": {
+            "zh": "配套工具",
+            "en": "Tools"
+          },
+          "path": "projects/RayTracing/tools.zip"
+        }
+      ],
+      "translations": {
+        "zh": {
+          "title": "凝视引擎 (光追器)",
+          "description": "基于物理的光线追踪 (PBR)。",
+          "details": "使用 <kbd>W</kbd> / <kbd>A</kbd> / <kbd>S</kbd> / <kbd>D</kbd> 移动。<kbd>Space</kbd> 向上，<kbd>Shift</kbd> 向下。<kbd>鼠标拖动</kbd> 旋转视角。"
+        },
+        "en": {
+          "title": "Eyeing Engine (Ray Tracer)",
+          "description": "Physics-based ray tracing (PBR).",
+          "details": "Use <kbd>W</kbd> / <kbd>A</kbd> / <kbd>S</kbd> / <kbd>D</kbd> to move. <kbd>Space</kbd> to go up, <kbd>Shift</kbd> to go down. <kbd>drag the mouse</kbd> to rotate the view."
+        }
+      }
+    },
+    {
+      "key": "portal",
+      "image": "portal.png",
+      "link": "file.html",
+      "iframe": "projects/Portal/portal.html",
+      "version": "Alpha 1.1",
+      "license": "GPLv3",
+      "author": "xxb",
+      "downloads": [
+        {
+          "label": {
+            "zh": "TurboWarp / Scratch 3.0",
+            "en": "TurboWarp / Scratch 3.0"
+          },
+          "path": "projects/Portal/portal.sb3"
+        },
+        {
+          "label": {
+            "zh": "网页",
+            "en": "Web"
+          },
+          "path": "projects/Portal/portal.html"
+        }
+      ],
+      "translations": {
+        "zh": {
+          "title": "传送门引擎",
+          "description": "3D软渲项目，支持传送门效果，基于四元数。",
+          "details": "使用 <kbd>W</kbd> / <kbd>A</kbd> / <kbd>S</kbd> / <kbd>D</kbd> 移动。<kbd>Space</kbd> 向上，<kbd>Shift</kbd> 向下。<kbd>鼠标滚轮</kbd> 缩放 FOV，<kbd>鼠标拖动</kbd> 旋转视角。"
+        },
+        "en": {
+          "title": "Portal Engine",
+          "description": "3D software rendering project with portal effects, quaternion-based.",
+          "details": "Use <kbd>W</kbd> / <kbd>A</kbd> / <kbd>S</kbd> / <kbd>D</kbd> to move. <kbd>Space</kbd> to go up, <kbd>Shift</kbd> to go down. <kbd>Mouse wheel</kbd> to zoom FOV, <kbd>drag the mouse</kbd> to rotate the view."
+        }
+      }
+    },
+    {
+      "key": "live2d",
+      "image": "live2d.png",
+      "link": "file.html",
+      "iframe": "projects/Live2D/live2d.html",
+      "version": "V 1.0",
+      "license": "CC BY-NC-SA 4.0",
+      "author": "xxb",
+      "downloads": [
+        {
+          "label": {
+            "zh": "TurboWarp / Scratch 3.0",
+            "en": "TurboWarp / Scratch 3.0"
+          },
+          "path": "projects/Live2D/live2d.sb3"
+        },
+        {
+          "label": {
+            "zh": "网页",
+            "en": "Web"
+          },
+          "path": "projects/Live2D/live2d.html"
+        }
+      ],
+      "translations": {
+        "zh": {
+          "title": "93 L2D",
+          "description": "xxb 的 OC！骨骼动画，支持人脸跟随。<br>约定：禁止将未修改项目在公共领域展示",
+          "details": "<kbd>X</kbd> 呼出表情菜单，<kbd>←</kbd> / <kbd>→</kbd> 切换表情，<kbd>Z</kbd> 确认，<kbd>A</kbd> 左手跟随，<kbd>D</kbd> 右手跟随，<kbd>S</kbd> 打招呼。<kbd>Q</kbd> 控制衣服。<kbd>E</kbd> 控制护目镜。"
+        },
+        "en": {
+          "title": "93 L2D",
+          "description": "xxb's OC! Skeletal animation with face tracking.<br>Agreement: Displaying unmodified projects in the public domain is prohibited.",
+          "details": "<kbd>X</kbd> brings up the emote menu, <kbd>←</kbd> / <kbd>→</kbd> switches emotes, <kbd>Z</kbd> confirms, <kbd>A</kbd> left hand follows, <kbd>D</kbd> right hand follows, <kbd>S</kbd> waves. <kbd>Q</kbd> controls the clothes. <kbd>E</kbd> controls the goggles."
+        }
+      }
+    },
+    {
+      "key": "LaTeX 渲染器",
+      "image": "latex.png",
+      "link": "file.html",
+      "iframe": "projects/LaTeX/latex.html",
+      "version": "Alpha 1.0",
+      "license": "GPLv3",
+      "author": "xxb",
+      "downloads": [
+        {
+          "label": {
+            "zh": "TurboWarp",
+            "en": "TurboWarp"
+          },
+          "path": "projects/LaTeX/latex.sb3"
+        },
+        {
+          "label": {
+            "zh": "Scratch 3.0",
+            "en": "Scratch 3.0"
+          },
+          "path": "projects/LaTeX/latex_scratch.sb3"
+        },
+        {
+          "label": {
+            "zh": "网页",
+            "en": "Web"
+          },
+          "path": "projects/LaTeX/latex.html"
+        }
+      ],
+      "translations": {
+        "zh": {
+          "title": "LaTeX 渲染器",
+          "description": "在 Scratch 实现的基于盒模型的 LaTeX 渲染器。",
+          "details": "<kbd>鼠标点击</kbd> 继续"
+        },
+        "en": {
+          "title": "LaTeX Renderer",
+          "description": "A LaTeX renderer based on the box model implemented in Scratch.",
+          "details": "<kbd>Mouse click</kbd> to continue"
+        }
+      }
+    },
+    {
+      "key": "graphic_design",
+      "image": "graphic_design.png",
+      "link": "file.html",
+      "iframe": "projects/GraphicDesign/graphic_design.html",
+      "version": "V 1.0",
+      "license": "CC BY-SA 4.0",
+      "author": "xxb",
+      "downloads": [
+        {
+          "label": {
+            "zh": "TurboWarp / Scratch 3.0",
+            "en": "TurboWarp / Scratch 3.0"
+          },
+          "path": "projects/GraphicDesign/graphic_design.sb3"
+        },
+        {
+          "label": {
+            "zh": "网页",
+            "en": "Web"
+          },
+          "path": "projects/GraphicDesign/graphic_design.html"
+        }
+      ],
+      "translations": {
+        "zh": {
+          "title": "平面设计",
+          "description": "xxb 的部分平面设计。",
+          "details": "鼠标点点点！"
+        },
+        "en": {
+          "title": "Graphic Design",
+          "description": "Partial graphic design by xxb.",
+          "details": "Click!"
+        }
+      }
+    },
+    {
+      "key": "8086_virtual_ide",
+      "image": "8086ide.png",
+      "link": "file.html",
+      "iframe": "projects/8086VirtualIDE/ide.html",
+      "version": "Beta 1.1",
+      "license": "GPLv3",
+      "author": "xxb",
+      "downloads": [
+        {
+          "label": {
+            "zh": "TurboWarp / Scratch 3.0",
+            "en": "TurboWarp / Scratch 3.0"
+          },
+          "path": "projects/8086VirtualIDE/ide.sb3"
+        },
+        {
+          "label": {
+            "zh": "网页",
+            "en": "Web"
+          },
+          "path": "projects/8086VirtualIDE/ide.html"
+        }
+      ],
+      "translations": {
+        "zh": {
+          "title": "8086 虚拟化 IDE",
+          "description": "用于 8086 汇编开发的 IDE。做了语法高亮。",
+          "details": "键鼠"
+        },
+        "en": {
+          "title": "8086 Virtual IDE",
+          "description": "An IDE for 8086 assembly development. Implemented syntax highlighting.",
+          "details": "Mouse & Keyboard"
+        }
+      }
+    },
+    {
+      "key": "font_renderer",
+      "image": "font.png",
+      "link": "file.html",
+      "iframe": "projects/Font/font.html",
+      "version": "Beta 1.1",
+      "license": "MIT",
+      "author": "xxb",
+      "downloads": [
+        {
+          "label": {
+            "zh": "TurboWarp / Scratch 3.0",
+            "en": "TurboWarp / Scratch 3.0"
+          },
+          "path": "projects/Font/font.sb3"
+        },
+        {
+          "label": {
+            "zh": "网页",
+            "en": "Web"
+          },
+          "path": "projects/Font/font.html"
+        },
+        {
+          "label": {
+            "zh": "配套工具",
+            "en": "Tools"
+          },
+          "path": "projects/Font/tools.zip"
+        }
+      ],
+      "translations": {
+        "zh": {
+          "title": "字体渲染器",
+          "description": "支持在 Scratch 渲染任何字体。",
+          "details": ""
+        },
+        "en": {
+          "title": "Font Renderer",
+          "description": "Supports rendering any font in Scratch.",
+          "details": ""
+        }
+      }
+    }
+  ]
+}

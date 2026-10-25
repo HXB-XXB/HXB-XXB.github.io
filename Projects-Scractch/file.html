@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>xxb 的小站</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/file.css">
+</head>
+
+<body>
+    <div class="background-container">
+        <div class="background">
+            <!-- <img src="img/background.svg" alt="背景图"> -->
+        </div>
+        <img src="img/furry.svg" alt="背景图" class="background-author-image">
+    </div>
+    <div class="overlay">
+        <header class="header">
+            <div class="header-content">
+                <div class="header-left">
+                    <button id="go-back-button" class="project-card-button">
+                        <div class="project-card-button-icon">
+                            <img src="img/back.svg" alt="">
+                        </div>
+                        <p id="back-label">返回</p>
+                    </button>
+                </div>
+                <div class="header-right">
+                    <button id="theme-button" class="header-button">
+                        <img src="img/moon.svg" alt="主题切换" class="theme-logo">
+                    </button>
+                    <button id="language-button" class="header-button">
+                        <img src="img/language.svg" alt="语言" class="theme-logo">
+                    </button>
+                </div>
+            </div>
+        </header>
+    </div>
+    <div class="project-container">
+        <div id="project-iframe" class="project-show">
+            <div id="run-content" class="project-show-sub">
+                <img id="run-project-image" src="img/project/live2d.png" class="project-iframe-image">
+                <div>
+                    <button id="run-project" class="project-card-button">
+                        <p id="run-project-label">运行项目</p>
+                        <div class="project-card-button-icon">
+                            <img src="img/run.svg" alt="">
+                        </div>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <p id="project-load-error" class="project-load-error" hidden></p>
+        <div class="project-body">
+            <div class="project-info">
+                <div>
+                    <h2 class="project-row">
+                        <span id="introduction-heading">项目介绍</span>
+                        <img src="img/readme.svg" class="inline-icon">
+                    </h2>
+                    <p id="project-title"></p>
+                    <p id="project-description"></p>
+                    <p id="project-details"></p>
+                </div>
+            </div>
+            <div class="project-info">
+                <div>
+                    <h2 class="project-row">
+                        <span id="version-heading">版本</span>
+                        <img src="img/versions.svg" class="inline-icon">
+                    </h2>
+                    <p id="project-version">—</p>
+                </div>
+            </div>
+            <div class="project-info">
+                <div>
+                    <h2 class="project-row">
+                        <span id="license-heading">许可证</span>
+                        <img src="img/law.svg" class="inline-icon">
+                    </h2>
+                    <p id="project-license">—</p>
+                </div>
+            </div>
+            <div class="project-info">
+                <div>
+                    <h2 class="project-row">
+                        <span id="download-heading">下载</span>
+                        <img src="img/download.svg" class="inline-icon">
+                    </h2>
+                    <div id="project-downloads" class="project-row">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/projects.js"></script>
+    <script src="js/language.js"></script>
+    <script src="js/theme.js"></script>
+    <script src="js/file.js"></script>
+</body>
+
+</html>
