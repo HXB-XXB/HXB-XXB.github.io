@@ -1,0 +1,109 @@
+iframe {
+    border: none;
+    width: 100%;
+    height: 100%;
+}
+
+.project-body {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+}
+
+.project-info {
+    display: flex;
+    gap: 20px;
+    color: var(--text-color);
+    background-color: var(--card-background-color);
+    padding: 10px 20px;
+    border-radius: 10px;
+    border-width: var(--border-width);
+    border-style: solid;
+    border-color: var(--border-color);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+.project-show {
+    width: 200%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    border-radius: 10px;
+    border-width: var(--border-width);
+    border-style: solid;
+    border-color: var(--border-color);
+    height: 100%;
+    aspect-ratio: 16 / 9;
+    background-color: var(--background-color);
+    min-width: 50vw;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.project-container {
+    padding: 0 20px 0 20px;
+    display: flex;
+}
+
+h2 {
+    margin-top: 0;
+    display: flex;
+}
+
+.project-row {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.inline-icon {
+    filter: var(--icon-filter);
+    height: 24px;
+    opacity: 0.8;
+}
+
+.project-download-button {
+    display: inline-flex;
+    align-items: center;
+    background-color: var(--button-background-color);
+    color: var(--text-color);
+    padding: 7px 14px;
+    border: var(--border-width) solid var(--border-color);
+    border-radius: 9999px;
+    text-decoration: none;
+    transition: background-color var(--animation-duration) ease,
+        border-color var(--animation-duration) ease;
+}
+
+.project-download-button:hover {
+    background-color: var(--button-background-color-hover);
+    border-color: var(--border-color-focus);
+}
+
+.project-load-error {
+    color: var(--text-color);
+    background-color: var(--card-background-color);
+    padding: 10px 20px;
+    border: var(--border-width) solid var(--border-color);
+    border-radius: 10px;
+}
+
+.project-iframe-image {
+    height: 100px;
+    border-radius: 10px;
+    border-width: var(--border-width);
+    border-style: solid;
+    border-color: var(--border-color);
+    overflow: hidden;
+}
+
+.project-show-sub {
+    display: flex;
+    justify-self: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+}
