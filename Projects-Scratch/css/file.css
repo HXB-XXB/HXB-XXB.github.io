@@ -1,0 +1,166 @@
+iframe {
+    border: none;
+    width: 100%;
+    height: 100%;
+}
+
+.project-body {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+}
+
+.project-info {
+    display: flex;
+    gap: 20px;
+    color: var(--text-color);
+    background-color: var(--card-background-color);
+    padding: 10px 20px;
+    border-radius: 10px;
+    border-width: var(--border-width);
+    border-style: solid;
+    border-color: var(--border-color);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+.project-show {
+    width: 200%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    border-radius: 10px;
+    border-width: var(--border-width);
+    border-style: solid;
+    border-color: var(--border-color);
+    height: 100%;
+    aspect-ratio: 16 / 9;
+    background-color: var(--background-color);
+    min-width: 50vw;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.project-container {
+    padding: 0 20px 0 20px;
+    display: flex;
+}
+
+h2 {
+    margin-top: 0;
+    display: flex;
+}
+
+.project-row {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.inline-icon {
+    filter: var(--icon-filter);
+    height: 24px;
+    opacity: 0.8;
+}
+
+.project-download-button {
+    display: inline-flex;
+    align-items: center;
+    background-color: var(--button-background-color);
+    color: var(--text-color);
+    padding: 7px 14px;
+    border: var(--border-width) solid var(--border-color);
+    border-radius: 9999px;
+    text-decoration: none;
+    transition: background-color var(--animation-duration) ease,
+        border-color var(--animation-duration) ease;
+}
+
+.project-download-button:hover {
+    background-color: var(--button-background-color-hover);
+    border-color: var(--border-color-focus);
+}
+
+.project-load-error {
+    color: var(--text-color);
+    background-color: var(--card-background-color);
+    padding: 10px 20px;
+    border: var(--border-width) solid var(--border-color);
+    border-radius: 10px;
+}
+
+.project-iframe-image {
+    height: 100px;
+    border-radius: 10px;
+    border-width: var(--border-width);
+    border-style: solid;
+    border-color: var(--border-color);
+    overflow: hidden;
+}
+
+.project-show-sub {
+    display: flex;
+    justify-self: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.project-iframe-sider {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--background-color);
+    border: var(--border-width) solid var(--border-color);
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    gap: 10px;
+    padding: 10px;
+    border-right: none;
+}
+
+.project-iframe-sider > button {
+    border: none;
+    height: auto;
+}
+
+.project-iframe-sider > button:hover {
+    background-color: var(--border-color-focus);
+}
+
+.project-iframe-body {
+    width: 100%;
+    display: flex;
+}
+
+#project-show {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.project-fullscreen {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 99999;
+}
+
+.project-fullscreen > .project-show {
+    border-right: none;
+    border-top: none;
+    border-bottom: none;
+    border-radius: 0;
+}
+
+.project-fullscreen > .project-iframe-sider {
+    border: none;
+    border-radius: 0;
+}
+
+a {
+    white-space: nowrap;
+}
