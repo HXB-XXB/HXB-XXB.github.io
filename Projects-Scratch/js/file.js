@@ -84,6 +84,10 @@ function startProject(project) {
         script.src = new URL("js/scratch_player.js", document.baseURI).href;
         script.id = "scratch-player-script";
         doc.body.appendChild(script);
+
+        const meta = doc.createElement("meta");
+        meta.name = "darkreader-lock";
+        doc.head.appendChild(meta);
     };
 
     document.getElementById("project-show").appendChild(frame);
