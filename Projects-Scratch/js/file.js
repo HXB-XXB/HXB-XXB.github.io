@@ -9,6 +9,7 @@ const currentProjectKey = params.get("project") || "portal";
 const loadError = document.getElementById("project-load-error");
 const fullscreenButton = document.getElementById("fullscreen-button");
 const restartButton = document.getElementById("restart-button");
+const keyboardButton = document.getElementById("keyboard-button");
 
 function setProjectText(project) {
     const lang = getLang();
@@ -136,6 +137,12 @@ async function initFile() {
         const frame = document.getElementById("scratch-player");
         if (frame) frame.src = frame.src;
         frame.focus();
+    });
+    keyboardButton.addEventListener("click", () => {
+        const keyboard = document.getElementById("mobile-keyboard");
+        keyboard.classList.toggle("hide-keyboard");
+        const frame = document.getElementById("scratch-player");
+        if (frame) frame.focus();
     });
 }
 

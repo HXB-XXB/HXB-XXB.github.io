@@ -7,6 +7,7 @@
     --animation-duration: 0.2s;
     --button-background-color: #323a52;
     --button-background-color-hover: rgba(103, 144, 255, 0.863);
+    --button-background-color-locked: rgba(110, 103, 90, 0.863);
     --border-color-focus: rgba(103, 144, 255, 0.863);
     --icon-filter: invert(1);
     --background-filter: brightness(0.5);
@@ -22,6 +23,7 @@
     --border-color: #b9c4dc;
     --button-background-color: #dce4f5;
     --button-background-color-hover: rgba(103, 144, 255, 0.863);
+    --button-background-color-locked: rgba(255, 207, 103, 0.863);
     --border-color-focus: rgba(103, 144, 255, 0.863);
     --icon-filter: invert(0);
     --background-filter: brightness(0.95);
@@ -189,7 +191,9 @@ button {
         transform var(--animation-duration) ease,
         zoom var(--animation-duration) ease,
         gap var(--animation-duration) ease,
-        border var(--animation-duration) ease;
+        border var(--animation-duration) ease,
+        height var(--animation-duration) ease,
+        padding var(--animation-duration) ease;
 }
 
 button:hover {

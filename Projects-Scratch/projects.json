@@ -8,6 +8,25 @@
       "version": "Beta 1.1",
       "license": "GPLv3",
       "author": "xxb",
+      "mobileKeys": [],
+      "mobileControls": {
+        "joystick": {
+          "up": "W",
+          "down": "S",
+          "left": "A",
+          "right": "D"
+        },
+        "arrowJoystick": {
+          "up": "ArrowUp",
+          "down": "ArrowDown",
+          "left": "ArrowLeft",
+          "right": "ArrowRight"
+        },
+        "vertical": {
+          "up": "Space",
+          "down": "Shift"
+        }
+      },
       "downloads": [
         {
           "label": {
@@ -52,6 +71,21 @@
       "version": "Alpha 1.1",
       "license": "GPLv3",
       "author": "xxb",
+      "mobileKeys": [
+        ["ArrowUp", "ArrowDown"]
+      ],
+      "mobileControls": {
+        "joystick": {
+          "up": "W",
+          "down": "S",
+          "left": "A",
+          "right": "D"
+        },
+        "vertical": {
+          "up": "Space",
+          "down": "Shift"
+        }
+      },
       "downloads": [
         {
           "label": {
@@ -89,6 +123,12 @@
       "version": "V 1.0",
       "license": "CC BY-NC-SA 4.0",
       "author": "xxb",
+      "mobileKeys": [
+        ["X", "ArrowLeft", "ArrowRight", "Z"],
+        ["A", "D", "S"],
+        ["Q", "E"]
+      ],
+      "mobileLockKeys": ["A", "D", "S"],
       "downloads": [
         {
           "label": {
@@ -207,6 +247,14 @@
       "version": "Beta 1.1",
       "license": "GPLv3",
       "author": "xxb",
+      "mobileKeys": [
+        ["Escape", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "-", "=", "Backspace"],
+        ["Tab", "Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P", "[", "]", "Enter"],
+        ["A", "S", "D", "F", "G", "H", "J", "K", "L", ";", "'"],
+        ["Shift", "Z", "X", "C", "V", "B", "N", "M", ",", ".", "/", "Shift"],
+        ["Ctrl", "Alt", "Space", "ArrowLeft", "ArrowDown", "ArrowUp", "ArrowRight"]
+      ],
+      "mobileLockKeys": ["Shift", "Ctrl", "Alt"],
       "downloads": [
         {
           "label": {
@@ -277,6 +325,55 @@
           "title": "Font Renderer",
           "description": "Supports rendering any font in Scratch.",
           "details": ""
+        }
+      }
+    },
+    {
+      "key": "rpg",
+      "image": "rpg.png",
+      "link": "file.html",
+      "iframe": "projects/RPG/rpg.html",
+      "version": "Beta 1.1",
+      "license": "MIT",
+      "author": "xxb",
+      "mobileKeys": [
+        ["X", "Z", "Shift"]
+      ],
+      "mobileLockKeys": ["Shift"],
+      "mobileControls": {
+        "dpad": {
+            "up": "ArrowUp",
+            "left": "ArrowLeft",
+            "down": "ArrowDown",
+            "right": "ArrowRight"
+        }
+      },
+      "downloads": [
+        {
+          "label": {
+            "zh": "TurboWarp / Scratch 3.0",
+            "en": "TurboWarp / Scratch 3.0"
+          },
+          "path": "projects/RPG/rpg.sb3"
+        },
+        {
+          "label": {
+            "zh": "网页",
+            "en": "Web"
+          },
+          "path": "projects/RPG/rpg.html"
+        }
+      ],
+      "translations": {
+        "zh": {
+          "title": "RPG 游戏引擎",
+          "description": "一个支持CG(配置式)、对话(配置式)、存档、骨骼动画(配置式)、状态管理、富文本、音乐、景深地图管理(基于多边形图元)、物理引擎、多端适配(自动)的RPG游戏引擎<br>请原谅我当时还不会画画QAQ",
+          "details": "使用 <kbd>A</kbd> / <kbd>D</kbd> 移动。<kbd>W</kbd> 跳跃，<kbd>S</kbd> 下蹲，<kbd>Shift</kbd> 疾跑。<kbd>Z</kbd> 确认，<kbd>X</kbd> 取消/菜单/退出，<kbd>↑</kbd> / <kbd>↓</kbd> / <kbd>←</kbd> / <kbd>→</kbd> 选择。"
+        },
+        "en": {
+          "title": "RPG Game Engine",
+          "description": "A RPG game engine that supports CG (configurable), dialogue (configurable), save/load, skeletal animation (configurable), state management, rich text, music, depth map management (based on polygon primitives), physics engine, and multi-platform adaptation (automatic).<br>Please forgive me for not being good at drawing at that time:P",
+          "details": "Use <kbd>A</kbd> / <kbd>D</kbd> to move. <kbd>W</kbd> to jump, <kbd>S</kbd> to crouch, <kbd>Shift</kbd> to sprint. <kbd>Z</kbd> to confirm, <kbd>X</kbd> to cancel/menu/exit, <kbd>↑</kbd> / <kbd>↓</kbd> / <kbd>←</kbd> / <kbd>→</kbd> to select."
         }
       }
     }

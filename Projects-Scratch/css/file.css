@@ -4,6 +4,10 @@ iframe {
     height: 100%;
 }
 
+#keyboard-button {
+    display: none;
+}
+
 .project-body {
     display: flex;
     flex-direction: column;

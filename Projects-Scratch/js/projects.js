@@ -15,6 +15,9 @@ const TRANSLATIONS = {
         license: '许可证',
         download: '下载',
         noDownloads: '暂无可用下载。',
+        rise: '上升',
+        descend: '下降',
+        verticalMovement: '升降控制',
         theme: '主题切换',
         language: '切换语言'
     },
@@ -32,6 +35,9 @@ const TRANSLATIONS = {
         license: 'License',
         download: 'Downloads',
         noDownloads: 'No downloads available.',
+        rise: 'Rise',
+        descend: 'Descend',
+        verticalMovement: 'Vertical movement',
         theme: 'Toggle theme',
         language: 'Switch language'
     }
