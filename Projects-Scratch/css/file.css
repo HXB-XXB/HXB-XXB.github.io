@@ -38,7 +38,6 @@ iframe {
     height: 100%;
     aspect-ratio: 16 / 9;
     background-color: var(--background-color);
-    min-width: 50vw;
     flex-direction: column;
     gap: 10px;
 }
@@ -133,6 +132,8 @@ h2 {
 .project-iframe-body {
     width: 100%;
     display: flex;
+    min-width: max(50vw, 355px);
+    min-height: 165px;
 }
 
 #project-show {

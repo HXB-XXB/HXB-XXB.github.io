@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>xxb 的小站</title>
+    <link rel="stylesheet" href="css/no_script.css">
+</head>
+
+<body>
+    <div id="no-script-page">
+        <div id="loading-info">
+            <div id="loading-icon"></div>
+            <div>
+                <h1>请稍后</h1>
+                <h3>Please wait</h3>
+            </div>
+        </div>
+        <div id="loading-page-text">
+            <div>
+                <p>如果您长时间停留在此页面。请检查是否允许 JavaScript 脚本运行。或者检查您的网络。<a href="/index.html" target="_parent">重试</a></p>
+                <p>If you stay on this page for a long time, please check whether JavaScript scripts are allowed to run.
+                    Or check your network.<a href="/index.html" target="_parent">Try again</a></p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        window.frameElement.parentNode.removeChild(window.frameElement);
+    });
+</script>
